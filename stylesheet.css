@@ -45,13 +45,16 @@ body{
      position: absolute;
      left: 20%;
      top: 134px;
-     border: 6px solid tomato;
+     border: 6px solid var(--img-profile);
 }
 
-.card-content h2 svg{
-    position: absolute;
-    top: 48px;
-    left: 27px;
+.card-content h2 {
+    color: var(--text);
+    font-weight: 400;
+}
+
+.card-content h2 img{
+    display: block;
 }
 
 .infos{
@@ -80,4 +83,54 @@ body{
 .card-content h3 img{
    width: 28px;
    height: 35px;
+}
+
+.picture{
+    overflow: hidden;
+}
+
+.picture-img{
+    position: absolute;
+}
+
+.title{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-left: 33px;
+    margin-top: 47px;
+}
+
+.title img{
+    width: 28px;
+    height: 35px;
+    
+}
+
+
+
+.infos ul{
+    position: absolute;
+    left: 22px;
+    top: 23px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    color: var(--text);
+    font-weight: 400;
+    list-style: none;
+}
+
+.infos ul li{
+    display: flex;
+    align-items: center;
+    gap: 9px;
+}
+
+.change-bg{
+    width: 229px;
+    height: 59px;
+    position: absolute;
+    left: 75%;
+    top: 50%;
 }
