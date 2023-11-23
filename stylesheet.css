@@ -1,0 +1,83 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg: #000000;
+    --bg-card: #0E1218;
+    --text: #F1F1F1;
+    --img-profile: #8257e5;
+    --buttons: #FFF;
+    --border-button: #1A1A1A;
+  }
+
+body{
+   background: var(--bg-card);
+   font-family: 'Prompt', sans-serif;
+}
+
+.card{
+    width: 438px;
+    height: 693px;
+    margin:auto 366px;
+    border-radius: 50px;
+    background: var(--bg);
+}
+
+.card-content{
+    width: 407px;
+    height: 644px;
+    background: var(--bg-card);
+    border-radius: 50px;
+    top: 24px;
+    margin-left: 16px;
+    position: relative;
+    overflow: hidden;
+}
+
+.picture{
+     width: 370px;
+     height: 372px;
+     background: var(--img-profile);
+     border-radius: 50%;
+     position: absolute;
+     left: 20%;
+     top: 134px;
+     border: 6px solid tomato;
+}
+
+.card-content h2 svg{
+    position: absolute;
+    top: 48px;
+    left: 27px;
+}
+
+.infos{
+    width: 194px;
+    height: 195px;
+    background: var(--bg);
+    position: absolute;
+    top: 352px;
+    left: 21px;
+    border-radius: 50px;
+    background: linear-gradient(45deg, rgba(255, 255, 255, 0.3), rgba(0, 0, 0, 1)); /* Degrade de vermelho para azul com 30% de opacidade */
+}
+
+.card-content h3{
+    position: absolute;
+    top: 582px;
+    left: 207px;
+    display: flex;
+    align-items: center;
+    font-weight: 400;
+    font-size: 20px;
+    color: var(--text);
+    gap: 11px;
+}
+
+.card-content h3 img{
+   width: 28px;
+   height: 35px;
+}
