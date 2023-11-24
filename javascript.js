@@ -1,6 +1,7 @@
 const img = document.querySelector('.picture-img')
 const button = document.querySelector('.change-bg')
 const cardContent = document.querySelector('.card')
+const buttonDownload = document.querySelector('.download')
 
 let actualColor = 0
 
@@ -17,18 +18,26 @@ button.addEventListener('click',()=>{
 
 
 
+
 async function getAPI(){
     const result = await fetch('https://api.github.com/users/Heitors09')
-    const img = document.querySelector('.picture-img')
+    const img = document.querySelector('.picture')
     const nameTitle = document.querySelector('.name')
     const infoPai = document.querySelector('.infos')
     
-    if (!result){
+    if (!result.ok){
         throw new Error(result.status)
     }else{
       const data = await  result.json()
-      img.src = data.avatar_url
       nameTitle.textContent = data.login
+      
+
+      const newImg = document.createElement('div')
+      newImg.innerHTML = `<img src="${data.avatar_url}" alt="">`
+      
+      
+      img.innerHTML += newImg.outerHTML
+
 
 
       const newDiv = document.createElement('ul')
@@ -51,7 +60,7 @@ async function getAPI(){
       
       
       infoPai.innerHTML += newDiv.outerHTML
-
+     
     }
 }
 
@@ -62,3 +71,49 @@ async function getAPI(){
 
 
 getAPI();
+
+
+
+async function downloadImage(){
+    try{
+     const cardImage = await html2canvas(cardContent)
+
+     const dataUrl = cardImage.toDataURL('image/png')
+
+     const DownloadLink = document.createElement('a')
+     
+
+     DownloadLink.href = cardImage.toDataURL('image/png')
+     DownloadLink.download = 'rocket_card.png'
+
+     DownloadLink.click();
+    }catch(error){
+        console.error('Erro ao gerar a imagem:', error);
+    }
+ }
+
+
+ function copyToClipboard(){
+    const cardContent = document.querySelector('.card')
+    const range =  document.createRange();
+    range.selectNode(cardContent);
+
+    window.getSelection().removeAllRanges();
+    window.getSelection().addRange(range);
+
+    try{
+         const succesfull = document.execCommand('copy');
+         const message = succesfull ? 'Card copiado para área de transferencia' : 'Falha ao copiar o card'
+         console.log(message);
+    }catch(err){
+        console.error('Erro ao copiar o card', err)
+    }
+    window.getSelection().removeAllRanges();
+
+ };
+
+
+ function startFunction(){
+    downloadImage();
+    copyToClipboard();
+ }
